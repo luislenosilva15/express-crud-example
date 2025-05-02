@@ -7,21 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum SIZE {
-  PP
-  P
-  M
-  G
-  GG
-  XGG
-  UNIQUE
+enum ProductTypes {
+  CLOTHES
+  SHOES
+}
+
+enum ProductStatus {
+  SOLD
+  AVAILABLE
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   name        String
   description String?
   price       Float
-  size        SIZE
-  createdAt   DateTime @default(now())
+  size        String
+  type        ProductTypes
+  status      ProductStatus @default(AVAILABLE)
+  createdAt   DateTime      @default(now())
 }
