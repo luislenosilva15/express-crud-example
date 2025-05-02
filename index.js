@@ -1,5 +1,6 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
+const cors = require("cors");
 
 const multer = require("multer");
 
@@ -11,6 +12,8 @@ const upload = multer({ storage });
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 app.post("/product", upload.single("file"), async (req, res) => {
   try {
