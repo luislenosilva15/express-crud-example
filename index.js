@@ -85,7 +85,7 @@ app.delete("/product/:id", async (req, res) => {
   }
 });
 
-app.put("/product/:id", async (req, res) => {
+app.put("/product/:id", upload.single("file"), async (req, res) => {
   const id = parseInt(req.params.id);
   const { name, description, price, size, type, status } = req.body;
 
